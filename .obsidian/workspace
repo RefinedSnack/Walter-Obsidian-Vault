@@ -1,0 +1,110 @@
+{
+  "main": {
+    "id": "70a48740f22e99ca",
+    "type": "split",
+    "children": [
+      {
+        "id": "c1015e344a63a7b7",
+        "type": "leaf",
+        "state": {
+          "type": "excalidraw",
+          "state": {
+            "file": "Excalidraw/Drawing 2022-07-09 17.49.36.excalidraw.md"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "87495e71b5e0439a",
+    "type": "split",
+    "children": [
+      {
+        "id": "3ae8971cc8a82403",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8879194a0c0ff259",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "b62f8be3216b52e8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 276
+  },
+  "right": {
+    "id": "14bc6c6058beaca2",
+    "type": "split",
+    "children": [
+      {
+        "id": "c78e1dcdebef9e83",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1f5a4f0e860bdc6d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Excalidraw/Drawing 2022-07-09 17.49.36.excalidraw.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "62700378c3941e65",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "c1015e344a63a7b7",
+  "lastOpenFiles": [
+    "Excalidraw/Drawing 2022-07-09 17.49.36.excalidraw.md",
+    "Untitled 2.md",
+    "Lemon-Squares.md",
+    "Logical Fallacies.md",
+    "Flow Analysis.md",
+    "Cultural and historical Archaeology.md",
+    "Analogy.md",
+    "Agency.md",
+    "DeGering-Family-Cookbook/Toothpick-Test.md",
+    "DeGering-Family-Cookbook/TODO-List.md"
+  ]
+}

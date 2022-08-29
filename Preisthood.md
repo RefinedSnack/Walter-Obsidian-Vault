@@ -1,0 +1,1 @@
+God's power and Authority 

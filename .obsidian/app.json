@@ -1,0 +1,24 @@
+{
+  "spellcheck": true,
+  "spellcheckDictionary": [
+    "Hominem",
+    "Falsidical",
+    "Stratigraphy",
+    "Processual",
+    "processualism",
+    "Seriation",
+    "Dendochronology",
+    "Ethnoarchaeology",
+    "Levantine",
+    "Zagros",
+    "Combinator",
+    "flatmap",
+    "monads",
+    "Pureé",
+    "Natchitoches",
+    "Beignets"
+  ],
+  "alwaysUpdateLinks": true,
+  "promptDelete": false,
+  "showFrontmatter": false
+}
