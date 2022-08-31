@@ -6,7 +6,8 @@
 - [Warm Fuzzies](#Warm-Fuzzies)
 - [Questions](#Questions)
 - [Andrews Response](#Andrews-Response)
-- [Question](#Question)
+- [Discussion Question](#Discussion-Question)
+
 
 ---
 ## Observations
@@ -152,6 +153,10 @@ Expecting Scenes to be trimmed
 
   ---
   
-## Question
+## Discussion Question
   
-Lean 
+Great conversation today! As Andrew's goals are to continue to develop the conflict/action and the horror/mystery genre, here is your assignment for today:
+
+1. Identify a specific moment in the play where you see an opportunity to shift away from conversation and develop the conflict or the action.
+
+2. Identify a moment in the play where you see an opportunity to develop the horror or mystery attributes of the piece.
