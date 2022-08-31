@@ -7,9 +7,11 @@
         "id": "c1015e344a63a7b7",
         "type": "leaf",
         "state": {
-          "type": "excalidraw",
+          "type": "markdown",
           "state": {
-            "file": "Excalidraw/Drawing 2022-07-09 17.49.36.excalidraw.md"
+            "file": "WDA Fall 2022/Andrew Play 1 Discussion.md",
+            "mode": "source",
+            "source": false
           }
         }
       }
@@ -51,7 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 276
+    "width": 130.5
   },
   "right": {
     "id": "14bc6c6058beaca2",
@@ -67,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Excalidraw/Drawing 2022-07-09 17.49.36.excalidraw.md",
+                "file": "WDA Fall 2022/Andrew Play 1 Discussion.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,15 +98,15 @@
   },
   "active": "c1015e344a63a7b7",
   "lastOpenFiles": [
-    "Excalidraw/Drawing 2022-07-09 17.49.36.excalidraw.md",
-    "Untitled 2.md",
-    "Lemon-Squares.md",
-    "Logical Fallacies.md",
-    "Flow Analysis.md",
-    "Cultural and historical Archaeology.md",
-    "Analogy.md",
-    "Agency.md",
-    "DeGering-Family-Cookbook/Toothpick-Test.md",
-    "DeGering-Family-Cookbook/TODO-List.md"
+    "10 Commandments of Software Design.md",
+    "UML.md",
+    "Plantuml.md",
+    "Model.md",
+    "CS340 Textbook.md",
+    "Software Design Patterns.md",
+    "Ethnographic.md",
+    "Processualism.md",
+    "Abrahamic Religions.md",
+    "How to swap to bash.md"
   ]
 }
