@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "c1015e344a63a7b7",
+        "id": "adf69d1fbbb8fc0e",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -53,7 +53,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 130.5
+    "width": 217.5
   },
   "right": {
     "id": "14bc6c6058beaca2",
@@ -96,17 +96,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "c1015e344a63a7b7",
+  "active": "adf69d1fbbb8fc0e",
   "lastOpenFiles": [
-    "10 Commandments of Software Design.md",
-    "UML.md",
-    "Plantuml.md",
-    "Model.md",
-    "CS340 Textbook.md",
-    "Software Design Patterns.md",
-    "Ethnographic.md",
-    "Processualism.md",
-    "Abrahamic Religions.md",
-    "How to swap to bash.md"
+    "Labs/Lab0.md",
+    "Guides/WSL_Tutorial/wsl_tutorial.md",
+    "Labs/Lab5.md",
+    "Guides/WSL_Tutorial/1.PNG",
+    "Guides/Code_Testing.md",
+    "Guides/Makefile_Tutorial/Makefile_Tutorial.md",
+    "Guides/Makefile_Tutorial/1.PNG",
+    "assets/images/lab/lab0_02-WSL.png.md",
+    "WSL_Tutorial/wsl_tutorial.md",
+    "WSL_Tutorial.md"
   ]
 }

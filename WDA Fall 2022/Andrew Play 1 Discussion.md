@@ -1,6 +1,12 @@
 # Andrew Play 1 Discussion
 ---
-## Table of Contents
+# Table of Contents
+
+- [Observations](#Observations)
+- [Warm Fuzzies](#Warm-Fuzzies)
+- [Questions](#Questions)
+- [Andrews Response](#Andrews-Response)
+- [Question](#Question)
 
 ---
 ## Observations
@@ -144,4 +150,8 @@ Expecting Scenes to be trimmed
 
 
 
+  ---
   
+## Question
+  
+Lean 

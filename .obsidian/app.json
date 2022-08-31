@@ -10,15 +10,12 @@
     "Dendochronology",
     "Ethnoarchaeology",
     "Levantine",
-    "Zagros",
-    "Combinator",
-    "flatmap",
-    "monads",
-    "Pureé",
-    "Natchitoches",
-    "Beignets"
+    "Zagros"
   ],
   "alwaysUpdateLinks": true,
   "promptDelete": false,
-  "showFrontmatter": false
+  "showFrontmatter": false,
+  "legacyEditor": false,
+  "livePreview": true,
+  "showLineNumber": true
 }
