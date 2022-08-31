@@ -122,4 +122,26 @@
 	- Was that a cry for companionship?
 	- Is that how she expresses love, 
 	- Fear of being alone?
+- How Christian do you want this to be?
+
+---
+## Andrews Response
+Things we observed were things Andrew wanted there
+
+Andrew would like to trim down the script to become more lean
+
+Pull out the emotional core to get more intrigue
+
+Goal is gothic, scary, mysterious
+
+They have Christmas
+
+Wants to explore more of the relationships
+
+Magic rules are more clear
+
+Expecting Scenes to be trimmed
+
+
+
   
