@@ -1,4 +1,11 @@
 # Selah Play 1 Discussion
+---
+## Table of Contents
+- [Observations](#Observations)
+- [Warm Fuzzies](#Warm-Fuzzies)
+- [Questions](#Questions)
+- [Wishlist](#Wishlist)
+- [Question?](#Question?)
 
 ---
 ### Observations
