@@ -9,5 +9,6 @@
   "obsidian-plugin-toc",
   "obsidian-excel-to-markdown-table",
   "obsidian-regex-replace",
-  "cm-show-whitespace-obsidian"
+  "cm-show-whitespace-obsidian",
+  "obsidian-plantuml"
 ]

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "WDA Fall 2022/Andrew Play 1 Discussion.md",
+            "file": "WDA Fall 2022/Selah Play 1 Discussion.md",
             "mode": "source",
             "source": false
           }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "WDA Fall 2022/Andrew Play 1 Discussion.md",
+                "file": "WDA Fall 2022/Selah Play 1 Discussion.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,15 +98,15 @@
   },
   "active": "adf69d1fbbb8fc0e",
   "lastOpenFiles": [
+    "cs340-UML/MusicPlayer.md",
+    "Participant (UML).md",
+    "UML.md",
+    "WDA Fall 2022/Andrew Play 1 Discussion.md",
     "Labs/Lab0.md",
     "Guides/WSL_Tutorial/wsl_tutorial.md",
     "Labs/Lab5.md",
     "Guides/WSL_Tutorial/1.PNG",
     "Guides/Code_Testing.md",
-    "Guides/Makefile_Tutorial/Makefile_Tutorial.md",
-    "Guides/Makefile_Tutorial/1.PNG",
-    "assets/images/lab/lab0_02-WSL.png.md",
-    "WSL_Tutorial/wsl_tutorial.md",
-    "WSL_Tutorial.md"
+    "Guides/Makefile_Tutorial/Makefile_Tutorial.md"
   ]
 }
