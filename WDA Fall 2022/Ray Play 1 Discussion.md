@@ -1,4 +1,12 @@
 # Ray Play 1 Discussion
+---
+## Table of Contents
+- [Observations](#Observations)
+- [Warm Fuzzies](#Warm-Fuzzies)
+- [Questions](#Questions)
+- [Rays comments](#Rays-comments)
+- [Whos story is it](#Whos-story-is-it)
+- [Is Hope and Moms relationship salvageable](#Is-Hope-and-Moms-relationship-salvageable)
 
 ---
 ### Observations
