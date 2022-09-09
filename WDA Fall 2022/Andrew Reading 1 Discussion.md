@@ -1,4 +1,4 @@
-# Andrew Play 1 Discussion
+# Andrew Reading 1 Discussion
 ---
 # Table of Contents
 

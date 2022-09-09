@@ -1,4 +1,4 @@
-# Selah Play 1 Discussion
+# Selah Reading 1 Discussion
 ---
 ## Table of Contents
 - [Observations](#Observations)
