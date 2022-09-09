@@ -1,5 +1,12 @@
 # Mel Reading 1 Discussion
 
+---
+## Table of Contents
+- [Observation](#Observation)
+- [Warm Fuzzies](#Warm-Fuzzies)
+- [Questions](#Questions)
+- [Mels Thoughts](#Mels-Thoughts)
+- [Reflection](#Reflection)
 
 ---
 ### Observation
