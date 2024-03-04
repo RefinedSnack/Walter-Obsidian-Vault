@@ -56,7 +56,7 @@ share: "true"
 	    - message — not encrypted  
 	    - ES(SHA256(message)) — a signature of the SHA256 hash of the message, using key S  
 - How do digital signatures work? Explain what each party exchanges using cryptographic notation.  
-	- ![Pasted image 20240228124415.png](./assets/Pasted%20image%2020240228124415.png)  
+	- ![Pasted image 20240228124415.png](assets/Pasted%20image%2020240228124415.png)  
 	-  Alice can sign (encrypt) a message with her private key (sA). Bob can verify (decrypt) the message with Alice’s public key (vA).  
 	    - Here we use (v, s) to represent the (public key, private key).  
 	    - Be sure to use separate keys for encryption/decryption and signing/verifying. signing/verifying.  
