@@ -3,7 +3,7 @@ share: "true"
 ---  
 # Minimax  
   
-![Risk Adverse](./Risk%20Adverse.md)  
+-> [Risk Adverse](./Risk%20Adverse.md)  
   
   
 - Player 1  
