@@ -3,7 +3,7 @@ share: "true"
 ---  
 # CS 470 Midterm  
   
-CS470 – Introduction to Artificial Intelligence  
+## CS470 – Introduction to Artificial Intelligence  
   
 Midterm “Exam”  
   
@@ -38,10 +38,8 @@ need to turn in your answers or notes from steps 1 and 2 above.
 ```  
   
 ## Foundations of Agents  
-  
 These questions are supposed to explore the basic underpinnings of agents and the common philosophies that AI  
 Designers use to construct them.  
-  
 1. According to the most common definition among AI scientists, what does it mean to be rational? (Hint: What is the difference between being rational and being omniscient?)  
 	1. Being rational is making the best choice with the provided information, or the choice that will maximize your expected utility.  
 	2. Agents should ACT rationally but do not need to THINK rationally  
@@ -76,85 +74,86 @@ Designers use to construct them.
 	4. No learning/adaptation required  
 	5. Must act quickly  
   
-  
 ## Game-Playing Agents (Adversarial Search)  
-  
 These questions are supposed to explore basic understanding of constructing a standard game-playing agent using  
 adversarial search.  
-  
 7. Consider the following zero-sum, turn-taking game in which the first player maxis trying to maximize the score, while second player minis trying to minimize the score. (Note: Red letters next to the nodes in the tree are labels for the the nodes of the true.)  
-    ![Pasted image 20240226122953.png](./assets/Pasted%20image%2020240226122953.png)  
-		a) What is the maximin (minimax) value of the game?  
-			3  
-		b) Which nodes in the tree are not expanded when using alpha-beta pruning?  
-  
+	1. ![Pasted image 20240226122953.png](./assets/Pasted%20image%2020240226122953.png)  
+	2. What is the maximin (minimax) value of the game?  
+		1. 3  
+	3. Which nodes in the tree are not expanded when using alpha-beta pruning?  
+		1. S, O  
 8. How does alpha-beta pruning change the maximin/minimax value that will be computed compared to what is computed by the minimax algorithm?  
-	1. It does not alter the final value of the game. It only changes how you explore the tree.  
+	1. It does not alter the final value of the game. It only changes how you explore the tree, you are guaranteed to find the best value of the game, so if A wins they will win by the value returned or better  
 9. On average, how does alpha-beta pruning impact the Big-Oh of minimax search?  
 	1. $O(b^{\frac{d}{2}})$  
-  
 10. In adversarial search, what is the primary purpose of a heuristic evaluation function?  
+	1. Function that estimates the value (“goodness”) of a state  
+		2. Still helps our algorithms make informed decisions  
+		3. Boosts computational performance  
+		4. Caveat: it’s only an estimate  
+			1. Something might look good but not be optimal  
+		5. Caveat: there are multiple ways to estimate something  
 11. What makes a good heuristic evaluation function? (Hint: We talked about several properties in class – they are in your textbook too)  
+	1. Include relevant features  
+	2. Weight features by importance  
+	3. Incorporate domain knowledge  
+	4. Have computational efficiency  
+	5. Be accurate (i.e. give a reasonable estimate)  
 12. In Reversi, transitions between nodes in the tree is deterministic. Could alpha-beta pruning still work in scenarios in which transitions are non-deterministic? Why or why not?  
-13. Reversi is a zero-sum game. Would alpha-beta pruning (with the minimax-search algorithm) be a good idea to  
-    use in a general-sum game? Why or why not? (Note: We only briefly talked about this in class – you might  
-    have to find some additional stuff to come up with an informed answer.)  
-14. Would alpha-beta pruning (with the minimax search algorithm) be a good algorithm if the opponent plays  
-    randomly?  
-15. ~~Tanner Clements won our preliminary Reversi Tournament (congratulations, Tanner!). Tanner’s agent used  
-    alpha-beta pruning with a clever heuristic function? Was Tanner’s agent intelligent? Why or why not?~~  
-  
-  
+	1. No, If the outcome of a move is uncertain, it becomes challenging to accurately assess those bounds, leading to potentially incorrect pruning decisions.  
+	2. You could use a similar approach, but it would lack the certianty that alpha-beta pruning has  
+13. Reversi is a zero-sum game. Would alpha-beta pruning (with the minimax-search algorithm) be a good idea to use in a general-sum game? Why or why not? (Note: We only briefly talked about this in class – you might have to find some additional stuff to come up with an informed answer.)  
+	1. Yes it would be, my only concern would be that you may not have enough computational power to do a full tree search. I likely would add a heuristic function to help narrow the search space  
+14. Would alpha-beta pruning (with the minimax search algorithm) be a good algorithm if the opponent plays randomly?  
+	1. It would work decently well, however, it assumes the opponent always plays the best move available, so it may not work perfectly. It won't maximize potential score of the whole game as well as other approaches might.  
+	2. It will however ensure that you get the best outcome no matter what the opponent chooses at any given step  
+15. ~~Tanner Clements won our preliminary Reversi Tournament (congratulations, Tanner!). Tanner’s agent used alpha-beta pruning with a clever heuristic function? Was Tanner’s agent intelligent? Why or why not?~~  
+	1.   
 ## Deriving Beliefs  
-  
 These questions are supposed to explore basic understanding of creating Bayesian-based beliefs.  
-  
 16. After graduation, you receive a job in a government agency in your home country that investigates your government for corruption. The first week on the job you are task with investigating the potential corruption of a high-ranking government official. If you decide to declare that the government official is corrupt, you will write a whistleblower report publicly calling the official out for corruption. Otherwise, you will publicly state (honestly or dishonestly – hopefully honestly) that you do not believe that the government official is corrupt. You decide to use what you learned in CS470 to reason about whether the government official is corrupt. From prior data, you know that 90% of government officials are corrupt. Your agency has also found a connection between government officials that call their mother frequently and those that do not. Only 10% of  corrupt government officials call their mother weekly, while 50% of non-corrupt government officials call their mother weekly. You investigate the call records of the high-ranking government official. In so doing, you discover that the official calls his/her mother weekly. You must now decide whether to file a whistleblower report (stating the government official is corrupt) or publicly state that the government official is not corrupt.  
-  
-(a) List the random variable(s) that you believe is/are relevant to reasoning about the corruption of this high-ranking government official.  
-(b) Define the sample space (i.e., what are the potential outcomes?) for each random variable listed in part (a).  
-(c) Determine the probability that the high-ranking government official you are investigating is corrupt?  
-(d) Should you accuse this particular government official of corruption? Actually, you don’t need to answer this question, as it is for the next unit we will cover. The question is just something a foreshadow boy or girl would ask.  
-  
+	1. List the random variable(s) that you believe is/are relevant to reasoning about the corruption of this high-ranking government official.  
+	2. Define the sample space (i.e., what are the potential outcomes?) for each random variable listed in part (a).  
+	3. Determine the probability that the high-ranking government official you are investigating is corrupt?  
+	4. Should you accuse this particular government official of corruption? Actually, you don’t need to answer this question, as it is for the next unit we will cover. The question is just something a foreshadow boy or girl would ask.  
 17. Derive Bayes rule using the product rule (which is $P(a,b) =P(a|b)P(b))$.  
-  
-  
-18. Consider three salient, life-altering events that a person could potentially experience: (1) Eat more than 100  
-    heads of broccoli before turning 6 years old, (2) Advance past the first elimination round of the CS470 Winter  
-    2023 Reversi tournament, and (3) Become a millionaire before turning 90 years old. We model each of these  
-    potential experiences as a boolean random variable:  
-       - A: Eat more than 100 heads of broccoli before turning 6;ΩA={a,¬a}  
-       - R: Advance past the first elimination round of Reversi tournament;ΩR={r,¬r}  
-       - M: Become a millionaire before turning 90;ΩM={m,¬m}  
-  
-Suppose that the joint probability table for these variables is given as follows:  
-  
-![Pasted image 20240226123406.png](./assets/Pasted%20image%2020240226123406.png)  
-  
-(a) A person became a millionaire at age 89. What is the probability that they ate more than 100 heads of broccoli before turning 6 years old?  
-(b) Are the random variables R and M independent?  
-(c) Are the random variables R and M conditionally independent given that a person ate 100 heads of broccoli  
-before turning 6?  
-  
-19. Consider the following Bayes Network which depicts the relationship between four random variables: W  
-    (whether or not you win the 470 Reversi Tournament), G (whether or not you graduate from BYU), J (whether  
-    or not you get a job soon after you leave BYU), and R (whether or not you eventually get rich).  
-![Pasted image 20240226123501.png](./assets/Pasted%20image%2020240226123501.png)  
-```  
-```  
-(a) Without any information about any of the random variables other than the probability tables given, compute the probability that R=T (i.e., you become rich).  
-```  
-```  
-(b) Suppose that you win the class Reversi Tournament (i.e., W=T). What is the probability that R=T.  
-  
-(c) Are W and R conditionally independent given J?  
-  
-20. The Bayes Filter is an algorithm designed to reason about the world given uncertain observations and outcomes.  
-    Consider a robot that has the ability to move about a world and to sense its environment with a sonar sensor.  
-    Suppose the robot has a map of its world. If such a robot is to determine where it is in the world using the Bayes  
-    Filter algorithm, name the two probability models (don’t give math notation, state what the two probability  
-    models represent)?  
-      
-21. Locate and label the two probability models you named in the previous question in the follow snippet of pseudo-  
-    code:  
-    ![Pasted image 20240226123530.png](./assets/Pasted%20image%2020240226123530.png)
+	1. First, $P(a,b) = P(a|b)P(b))$.  
+	2. Similarly, $P(a,b) = P(b|a)P(a))$.  
+	3. Combined: $P(a|b)P(b)) = P(b|a)P(a))$  
+	4. $\therefore P(a|b) = \frac{P(b|a)P(a)}{P(a|b)}$  
+18. Consider three salient, life-altering events that a person could potentially experience: (1) Eat more than 100 heads of broccoli before turning 6 years old, (2) Advance past the first elimination round of the CS470 Winter 2023 Reversi tournament, and (3) Become a millionaire before turning 90 years old. We model each of these potential experiences as a boolean random variable:  
+	1. A: Eat more than 100 heads of broccoli before turning 6; ΩA={a,¬a}  
+	2. R: Advance past the first elimination round of Reversi tournament; ΩR={r,¬r}  
+	3. M: Become a millionaire before turning 90; ΩM={m,¬m}  
+	4. ![Pasted image 20240226123406.png](./assets/Pasted%20image%2020240226123406.png)  
+		1. A person became a millionaire at age 89. What is the probability that they ate more than 100 heads of broccoli before turning 6 years old?  
+			1. $P(m,a) = P(m|a)P(a)$  
+			2. $P(a) = P(m|r,a) + P(\lnot m| r, a) + P(m| \lnot r,a) + P(\lnot m| \lnot r, a)$  
+			3. $P(a) = 0.027 + 0.003 + 0.063 + 0.007$  
+			4. $P(a) = 0.1$  
+			5. $P(m|a) = 0.027$  
+			6. $P(m,a) = 0.027 * 0.1$  
+			7. $P(m,a) = 0.0027$  
+		2. Are the random variables R and M independent?  
+			1. $P(m) = 0.027 + 0.035 + 0.063 + 0.215 = 0.34$  
+			2. $P(r) = 0.027 + 0.003 + 0.035 + 0.035 = 0.1$  
+			3. $P(m) * P(r) = 0.034$  
+			4. No they are not b/c $P(m,r) \ne P(m) * P(r)$  
+		3. Are the random variables R and M conditionally independent given that a person ate 100 heads of broccoli before turning 6?  
+			1. $P(r,m |a) = \frac{P(r,m,a)}{P(a)}$  
+			2. $P(r,m |a) = \frac{0.027}{0.1}$  
+			3. $P(r,m | a) = 0.27$  
+			4. $P(r|a) * P(m|a)$  
+			5. $P(r|a) = 0.027 + 0.003 = 0.03$  
+			6. $P(m|a) = 0.027 + 0.063 = 0.03$  
+			7. $P(r|a) * P(m|a) = 0.0009$  
+			8. No they are not b/c $P(m,r|a) \ne P(m|a) * P(r|a)$  
+19. Consider the following Bayes Network which depicts the relationship between four random variables: W (whether or not you win the 470 Reversi Tournament), G (whether or not you graduate from BYU), J (whether or not you get a job soon after you leave BYU), and R (whether or not you eventually get rich). ![Pasted image 20240226123501.png](./assets/Pasted%20image%2020240226123501.png)  
+	1. Without any information about any of the random variables other than the probability tables given, compute the probability that R=T (i.e., you become rich).  
+	2. Suppose that you win the class Reversi Tournament (i.e., W=T). What is the probability that R=T.  
+	3. Are W and R conditionally independent given J?  
+20. The Bayes Filter is an algorithm designed to reason about the world given uncertain observations and outcomes. Consider a robot that has the ability to move about a world and to sense its environment with a sonar sensor. Suppose the robot has a map of its world. If such a robot is to determine where it is in the world using the Bayes Filter algorithm, name the two probability models (don’t give math notation, state what the two probability models represent)?  
+	1.   
+21. Locate and label the two probability models you named in the previous question in the follow snippet of pseudo-code: ![Pasted image 20240226123530.png](./assets/Pasted%20image%2020240226123530.png)  
+	1. 
