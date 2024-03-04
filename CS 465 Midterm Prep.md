@@ -1,0 +1,247 @@
+---  
+share: "true"  
+---  
+# CS 465 Midterm Prep  
+  
+## Topics to study  
+  
+### Concepts and principles  
+- What are important questions to be considered when performing threat modeling?  
+	- What threats exist within the system  
+	- Who would want to attack the system  
+	- What vulnerabilities have existed in the past, and have we protected against them properly  
+	- What motivations would someone have  
+	- What are we working on  
+	- What can we do about it  
+	- What could go wrong  
+	- Did we do a good enough job  
+- How does risk assessment relate to threat modeling?  
+	- Risk Assessment: Enumerate potential Vulnerabilities and asses their likelihood and severity: DREAD  
+	- Threat Modeling: Very broad, Risk assessment helps to choose which problems to protect against. Look at attack vectors (STRIDE)  
+		- Book: “A threat model identifies threats, threat agents, and attack vectors that the target system considers in scope to defend against”  
+		- [Threat modeling manifesto](https://www.threatmodelingmanifesto.org/): “Threat modeling is analyzing representations of a system to highlight concerns about security and privacy characteristics”  
+		- [OWASP](https://owasp.org/www-community/Threat_Modeling): “Threat modeling works to identify, communicate, and understand threats and mitigations within the context of protecting something of value."  
+- What are the components of DREAD?   
+	- [DREAD](./DREAD.md) = A form of risk assessment  
+### Cryptographic building blocks  
+-  What is the difference between information-theoretic security and computational security?  
+	- **Information-theoretic security**: security is based on mathematical principles and concepts from information theory. It aims to achieve provable security guarantees that hold regardless of the computational resources available to an adversary.  
+	- **Computational Security:** relies on the assumption that certain computational problems are difficult to solve within a reasonable amount of time or with reasonable computational resources. Security is based on the hardness of these computational problems, such as factoring large integers or discrete logarithms.  
+- What are the different types of attacks that can be made on a cipher?  
+	- A _ciphertext-only_ attack requires the attacker to guess the plaintext (or the key) using only the ciphertext.  
+	- A _known-plaintext_ attack means the attacker has access to examples of both plaintext and ciphertext.  
+	- A _chosen-plaintext_ attack means the attacker can choose a plaintext and see the corresponding encrypted ciphertext.  
+	- A _chosen-chiphertext_ attack means the attacker can choose ciphertext and see the corresponding decrypted plaintext.  
+- Why does symmetric encryption use block ciphers?  
+	- Protects against same or similar blocks as having the exact same encryption between blocks. Each block is relatively small when compared to the message, the block cipher allows you to chain blocks together   
+- How can two people use basic challenge-response to prove ownership of a shared symmetric key?  
+	- [Entity Authentication](Entity%20Authentication.md)  
+		- We have a shared key, and I want them to prove that they have it.  
+	![Pasted image 20240223132854.png](./assets/Pasted%20image%2020240223132854.png)  
+		- Exchange keys earlier, one party encrypts a nonce with the key, they then exchange the key information  
+- How does hybrid encryption work? Explain what each party exchanges using cryptographic notation.  
+	- ![Pasted image 20240228124119.png](./assets/Pasted%20image%2020240228124119.png)  
+	- Hybrid protocols combine symmetric-key and public-key techniques.  
+	- The server generates an RSA key pair, (S, V)  
+	- The client sends the server a Hello message  
+	- The server response includes its RSA public key, V  
+	- The client creates a symmetric encryption key K and an HMAC key H  
+	- The client sends a message that includes:  
+	    - EV(K) — the key K, encrypted with V  
+	    - IV — the AES initialization vector  
+	    - EK(message) — a message, encrypted with key K  
+	    - EV(H) — the key H, encrypted with V  
+	    - HMACH(message) — the HMAC of the message, using key H  
+	- The server responds with a message that includes:  
+	    - message — not encrypted  
+	    - ES(SHA256(message)) — a signature of the SHA256 hash of the message, using key S  
+- How do digital signatures work? Explain what each party exchanges using cryptographic notation.  
+	- ![Pasted image 20240228124415.png](./assets/Pasted%20image%2020240228124415.png)  
+	-  Alice can sign (encrypt) a message with her private key (sA). Bob can verify (decrypt) the message with Alice’s public key (vA).  
+	    - Here we use (v, s) to represent the (public key, private key).  
+	    - Be sure to use separate keys for encryption/decryption and signing/verifying. signing/verifying.  
+	- See [Figure 2.9, page 40](https://people.scs.carleton.ca/~paulv/toolsjewels/TJrev1/ch2-rev1.pdf)  
+	- Digital signatures provide:  
+	    - _data origin authentication_ — we can verify who signed the message  
+	    - _data integrity_ — we can verify whether the message is the same as what was signed  
+	    - _non repudiation_ — the signer can’t claim they didn’t sign the message (unless someone stole their private key)  
+	- Use of public key cryptography by the general public is hard because it requires you to keep your private key safe and to have a reliable way to distribute your public key to others. These are _key management_ issues.  
+- How does Diffie-Hellman establish a shared key between two people?  
+	- Modular exponentiation is used.   
+		- (1) A → B : g^a(mod(p)) ... B selects private b, computes K = (g^a)^b(mod(p))   
+		- (2) A ← B : g^b(mod(p)) ... A uses its private a, computes K = (g^b)^a(mod(p))  
+		- The private keys a and b of A, B respectively are chosen as fresh random numbers in the range [1, p − 2]. An attacker observing the messages g a and g b cannot compute g ab the same way A and B do, since the attacker does not know a or b.   
+		- Trying to compute a from g a and known parameters g, p is called the discrete logarithm problem, and turns out to be a difficult computational problem if p is chosen to have suitable properties.   
+		- While the full list is not our main concern here, p must be huge and p − 1 must have at least one very large prime factor. The core idea is to use discrete exponentiation as a one-way function, allowing A and B to compute a shared secret K that an eavesdropper cannot.  
+	- Allows users to communicate over an insecure terminal  
+	- This was invented for situations where public keys are NOT available  
+		- useful in situations where shared keys are difficult or impossible to use  
+- Explain the properties of a cryptographic hash function.  
+	- ![Preimage Resistance](./Preimage%20Resistance.md)  
+	- ![Second Preimage Resistance](./Second%20Preimage%20Resistance.md)  
+	- ![Collision Resistance](./Collision%20Resistance.md)  
+- Explain what an HMAC does. Use cryptographic notation to show what one party would send to another when using an HMAC.  
+	- HMAC is a keyed MAC, the key is passed into the algorithm, it produces a tag, which proves that the message has integrity and that both parties know the key.  
+	- You get integrity AND authentication (meaning that both parties have the shared key)  
+	- $hmac(k,m) -> tag(t)$  
+	- Each party sends the generated tag and the message  
+		- The other party can check the tag to see if it matches  
+	- Hmac is the algorithm to generate the tag  
+	- t is the tag to be sent back to the sender  
+	- k is the shared key  
+	- m is the message  
+	- ![Pasted image 20240226113044.png](./assets/Pasted%20image%2020240226113044.png)  
+### User authentication  
+- Explain how salting and hashing of passwords works, including what is stored in a password database.  
+	- Hashing a password:  
+		- Converting data like a string into a random set of characters. A hash function takes an input and produces a (hopefully) unique output.  
+			- An ideal hash function will be deterministic, quick to compute, Irreversible, and will produce a unique output for any unique input  
+		- Salting a password: a  
+			- Add a random string of characters or numbers to a password before hashing it. The salt value ensures that even if two users have the same password, their hashed passwords will be different.  
+		- Stored in the database:  
+			- The hashed password  
+			- The username or id of the user  
+			- The salt  
+- What are the current NIST recommendations for password composition policies? Why have they made these recommendations?  
+	- now recommends only password lengths be enforced — 8 characters minimum  
+	- Requiring users to add other things does little to increase the actual entropy of the password  
+	- Ultimately you should not rely on using people to generate sufficiently random passwords  
+- Explain how entropy applies to passwords and why it may not accurately reflect how people choose passwords.  
+	- Entropy relates the idea of how random and large the space for the password is. A password with high entropy is random, and ideally in a large key space. An example would be a password with 4 bits, there are $2^4$ possible passwords, so we would say the entropy of the space is 16. An entropic password would be one that is equally likely to be any of the 16 possibilities.  
+	- People are bad at choosing entropic passwords, the key space is large, but they need to remember them. People are choosing easy to remember passwords, which artificially reduces the key space of the problem. This is part of why password dictionary attacks are possible.  
+- Explain the basics of how a federated identity system works.  
+	- *Textbook*:  
+		- The design of FI systems specifies protocols for user identity registration, user-to-IdP authentication, IdP-to-SP authentication, and who controls the name space of user identities. An additional party, the federation operator, sets administrative and security policies; how these are enforced depends on the parties involved.   
+		- (In enterprise SSO systems, internal information technology staff and management are responsible.)   
+		- Each user registers with an IdP, and on later requesting a service from an RP/SP, the user (browser) is redirected to authenticate to their IdP, and upon successful authentication, an IdP-created authentication token is conveyed to the RP (again by browser redirects).   
+		- Thus IdPs must be recognized by (have security relationships with) the RPs their users wish to interact with, often in multiple administrative domains.   
+		- Userto-IdP authentication may be by the user authenticating to a remote IdP over the web by suitable user authentication means, or to a local IdP hosted on their personal device.  
+	- In a federated identity system, users sign up with an Identity Provider (IdP). When they want to use a service from another provider, called a Service Provider (SP), they're sent back to their IdP to prove who they are. If the IdP confirms their identity, the user gets a special token to use with the SP. This system relies on agreements between IdPs and SPs, and sometimes users can use their own device to prove who they are. Companies usually manage these systems internally for their employees.  
+	- Example is Kerberos  
+- How does a one-time password generator work? How does a TOTP generator work?  
+	- *Textbook*:  
+		- passwords valid for one use only. A challenge is how to pre-share lists of one-time passwords between the party to be authenticated (claimant) and the verifier. For electronic account access, some banks give customers paper lists of passwords to be used once each (then crossed off); the server keeps corresponding records for verification. Another method is to use one-way hash functions to generate sequences of one-time passwords from a seed  
+		- OTPS FROM LAMPORT HASH CHAINS.   
+			- Starting with a random secret (seed) w, user A can authenticate to server B using a sequence of one-time passwords as follows (Fig. 3.3). H is a one-way hash function (Chapter 2) and t is an integer (e.g., t = 100). Let a hash chain of order t be the sequence: w, H(w), H(H(w)), H 3 (w), ..., H t (w). H t means t nested iterations. The elements in the sequence are used once each in the order:  
+			- h1 = H 99(w), h2 = H 98(w), ..., h98 = H(H(w)), h99 = H(w), h100 = w (3.4)   
+			- For 1 ≤ i ≤ 100 the password for session i will be hi = H t−i (w). As set-up, A sends as a shared secret to B, the value h0 = H 100(w), over a channel ensuring also data origin authenticity (so B is sure it is from A, unaltered); B stores h0 as the next-verification value v. Both parties set i = 1. Now to authenticate in session i (for t sessions, 1 ≤ i ≤ t),   
+			- A computes the next value hi in the chain and sends to B: (idA, i, hi). (The notation is such that the values are used in reverse order, most-iterated first.) B takes the received value hi , hashes it once to H(hi), checks for equality to the stored value v (which is hi−1), and that the i received is as expected. Login is allowed only if both checks succeed;   
+			- B replaces v by the received hi (for the next authentication), and i is incremented. A can thus authenticate to B on t occasions with distinct passwords, and then the set-up is renewed with A choosing a new w (one-time passwords must not be reused).   
+			- Note that for each session, A provides evidence she knows w, by demonstrating knowledge of some number of iterated hashes of w; and even if an attacker intercepts the transferred authentication value, that value is not useful for another login (due to the one-way property of H).  
+	- A one-time password (OTP) generator makes passwords that work only once. One way is by giving users a list of passwords, and each time they log in, they use the next one on the list.  
+	- You can use also use **Lamport Hash Chains** to generate one-time passwords, a sequence of hashed values is generated iteratively, each new value being computed from the previous one. This creates a chain of hashes, where each subsequent hash is derived from the previous one. This ensures that each password in the sequence is unique and unpredictable, as even a small change in the input produces a vastly different output.  
+- Why would a company or a user want to use two-factor authentication?  
+	- Two-factor authentication (2FA) provides an additional layer of security beyond passwords by requiring users to provide a second form of verification, typically something they have access to, like a smartphone or an authentication app. This mitigates the risk of unauthorized access even if passwords are compromised, as attackers would also need physical access to the second factor. 2FA is effective in countering various threats such as phishing attacks, credential stuffing, and unauthorized account access.  
+	- Businesses implement 2FA to comply with industry regulations, enhance security measures, and bolster user trust. It reduces the likelihood of successful cyberattacks, protects sensitive data, and mitigates the impact of potential breaches. By requiring multiple factors for authentication, 2FA significantly strengthens security posture, making it more challenging for malicious actors to compromise accounts and systems  
+	- Users use 2FA to help reduce the danger of an attack on their password, and to protect critical systems. Most users don't care as much about their RuneScape account relative to their bank account, so users generally should choose to use it on systems that are more important to them  
+### Access control  
+- Describe the basics of how an operating system provides memory protection for processes.  
+	- **Isolation**  
+		- Two proceses, sharing the same computer system — need to be sure they can’t access each others’ memory! Otherwise, _nothing_ is safe.  
+		- Started with three components:  
+		    - _descriptor register_: which addresses a process can access  
+		    - _privileged bit_: when set, can change the descriptor register contents, can only be used by _supervisor_  
+		    - _supervisor_: special process that is in charge of the system  
+		    - strict isolation, without sharing  
+	- **Segment addressing + access permissions**  
+		- divides memory into segments, each one with access permissions for read, write, execute, mode (e.g. supervisor or user), fault  
+		- start of virtual memory — the same physical address can be mapped to multiple processes, each with different segment identifiers and access permissions  
+		- see [Figure 5.2, page 129](https://people.scs.carleton.ca/~paulv/toolsjewels/TJrev1/ch5-rev1.pdf)  
+	- **Accountability**  
+		- each user of the system gets a separate username, password, user ID  
+		- processes also get identifiers  
+		- need to keep track of everything, e.g. for billing purposes   
+	- **Roles**  
+		- e.g. user, administrator  
+		- often change usernames when changing roles  
+		- bad practice to share username among people (e.g. sudo, root)  
+		- better to use role-based access control (RBAC, see section 5.7)   
+	- **Reference monitoring**  
+		- need to defend against malicious users  
+		- every access by a program to any memory is validated against a list of permitted uses, based on the user and the program function  
+		- uses an _access matrix_ of all subject/object pairs and their associated permissions  
+		- see [Figure 5.4, page 131](https://people.scs.carleton.ca/~paulv/toolsjewels/TJrev1/ch5-rev1.pdf)  
+		- typically implemented as a monitor per class of object  
+		- must be:  
+		    - tamper-proof  
+		    - not circumventable  
+		    - verifiable by analysis and tests  
+		- called a _security kernel_  
+		- difficult to implement in practice — see the discussion on dependencies  
+		- if you focus on subjects and what they can do — you get _capability lists_  
+		- if you focus on objects and what is allowed — you get _access control lists_  
+		- _audit trails_ allow you to inspect what happened, after the fact  
+- Explain how ugo file permissions work in Linux.  
+	- User, Group, Other  
+	- userID  
+	- groupID  
+	- see /etc/passwd, /etc/shadow, /etc/group  
+	- superuser: userID = 0, root  
+	- fixed length!  
+	- You have different levels of access per file, reading, writing and/or execution  
+- Explain the purpose of the setuid bit in Linux and how it works.  
+	- means the file, if run, executes with the permissons of the owner, rather than the user running the program  
+	- allows the program to do things the owner can do  
+	- attackers look for programs owned by root with setuid bit set  
+	- if you can find a vulnerability in a root-owned program with setuid bit set, you can do anything on the system  
+	- ![Pasted image 20240228130841.png](./assets/Pasted%20image%2020240228130841.png)  
+- How is Role-Based Access Control different from file-based access control? What are its advantages?  
+	- File-based access control associates permissions directly with individual files or directories, resulting in a system where access rights are managed on a per-resource basis.   
+	- This approach can lead to complexity and inefficiency, especially as the number of users and resources increases, making it challenging to maintain and audit access permissions. In contrast, Role-Based Access Control (RBAC) organizes permissions into roles, assigning users to specific roles based on their job functions.   
+	- RBAC simplifies access control management by reducing the number of permissions that need to be managed directly, promoting scalability, security, and compliance through the clear definition of roles and permissions. By aligning access rights with organizational roles, RBAC offers a more manageable and efficient approach to access control in complex systems.  
+  
+### Software security  
+- Give an example of a TOCTOU race condition.  
+	- *Textbook:*  
+		- TOCTOU RACE. Suppose an access control file permission check is made at time t1, and the object is accessed at time t2 > t1. A common implicit assumption is that the condition checked does not change from time-of-check to time-of-use (TOCTOU). But in multi-processing systems with interrupts, things do change—e.g., metadata like file permissions and owners, the object a filename resolves to, or arguments passed to called routines. When a condition check made at one instant is relied on later, and there is a chance that in the interval something changes the outcome—including due to malicious actions that increase the likelihood of change—then an exploitable race condition may exist. This situation has occurred in a surprising diversity of situations, and such TOCTOU races require special attention by system designers and developers  
+	- ![Pasted image 20240227122333.png](./assets/Pasted%20image%2020240227122333.png)  
+	- This is a time of check vs time of use race condition. If the time that you check if a recourse is available occurs separately from when you use it, an attacker can exploit that difference by allowing the check to pass, then before it is used altering the data  
+	- An example of this was problem 5 in our exploit and patch lab, where a file was checked to see if it existed BEFORE it was created and used, so the malice user could run the program, wait for the check to happen, make the file, and then exploit the authorization status of the systems file.  
+- Give an example of how an integer-based vulnerability.  
+	- Integer Overflow. Minecraft the game has a system where a user can create a map of a part of your world. This map is an overhead view of the area of the world and is a popular method for creating in game art. Each time a map is created it is assigned an integer map_id. This map_id starts at 1 for the first map and increments each time a new map is created. This is done so that you can duplicate a map, which will make a copy with the same map_id so the game can render the correct image.  
+	- The issue with this system it that the game cannot properly handle negative map_ids (precise reason for this is unknown).  
+	- A malicious user can then, overflow the integer by creating a large number of maps, causing the global map_id_count to become a negative number. This wipes out all existing maps and has caused much sorrow on public servers.  
+	- When using an integer a programmer should be careful to handle positive, 0, and negative values. In addition the programmer should always consider what happens when one of these integers overflows.  
+- Explain how a basic buffer overflow vulnerability works.  
+	- A programmer creates a buffer of some kind. This is typically an array. Since we exist in the real world and not in magic math land, the size of our buffer is finite. If you allow the user to write data to the buffer and do _not_ restrict the amount of data then the user can write more data to the buffer than is allocated for it. This lets the user go past the size of the buffer and write arbitrary data into the head or the stack (depending on where the buffer is allocated). This is bad. It is a common attack vector that still plagues many system.   
+- Explain how a heap-spraying attack works.  
+	- This is a vulnerability that arises when the heap is both writable (which is necessary) and executable (which is unnecessary)  
+	- To perform a heap spraying attack you place a large number of instances into the heap on the attacker chosen code. The objective to to arrange a bunch of "traps" for the user to fall into. If the target program runs any of those strings you have now executed arbitrary code using their process.  
+	- ![Pasted image 20240227121316.png](./assets/Pasted%20image%2020240227121316.png)  
+- How does a canary defend against a stack-based buffer overflow vulnerability?  
+	- From the book:   
+		- Stack canaries are checkwords used to detect code injection. An extra field is inserted in stack frames just below (at lower address than) attack targets such as return addresses just above the local variables. A buffer overflow attack that corrupts all memory between the buffer and the return address will overwrite the canary. A run-time system check looks for an expected (canary) value in this field before using the return address. If the canary word is incorrect, an error handler is invoked. Heap canaries work similarly.  
+	- It protects your system by adding some known data to the end of a stack frame. If this data is changed you know that on overflow occurred, this is checked at runtime to ensure nothing went wrong.  
+- How does ASLR defend against a stack-based buffer overflow vulnerability?  
+	- Code injection attacks often rely on predictable memory layouts. To help this ASLR randomizes the layout of objects in memory, making it difficult to predict where the objects will be located in memory.  
+  
+### Malicious software  
+- What is the difference between a virus and a worm?  
+	- The main difference between viruses and worms lies in their method of propagation and spreading. Viruses rely on user interaction to spread and typically attach themselves to executable files, while worms are self-replicating and spread independently through network vulnerabilities.  
+	- **Virus:**  
+		- A program that can infect other programs or files by modifying them to include a possibly evolved copy of itself  
+		- 4 stages  
+			1. Dormancy. A virus is typically dormant until the host program runs.   
+			2. Propagation. This is when (and how) the malware spreads.   
+			3. Trigger condition. This controls when the payload is executed.   
+			4. Payload. This is the functionality delivered by the malware (other than propagating). Payload actions range from relatively benign (an image walking across a screen) to severe (erasing files, or taking software actions that damage hardware).  
+	- **Worm:**  
+		- i) Worms propagate automatically and continuously, without user interaction.   
+		- ii) Worms spread across machines over networks, leveraging network protocols and network daemons (rather than infecting host programs beforehand as viruses do).   
+		- iii) Worms exploit software vulnerabilities, e.g., buffer overflows, while viruses tend to abuse software features or use social engineering.  
+- Give an example of a strategy an anti-virus program could use to detect malware. Give an example of a counter-attack a virus could use to defeat this detection measure.  
+	- Digital Signatures  
+	- **Detection Strategy: Using Hashes of Known Good Programs**   
+		- Anti-virus programs could maintain a database of cryptographic hashes (MD5, SHA-1, SHA-256, etc.) of known clean or "good" programs. When scanning files on a system, the anti-virus software calculates the hash of each file and compares it against the hashes in its database. If a file's hash matches that of a known good program, it's considered safe.  
+	- **Counter-Attack by Malware: Exploiting Vulnerabilities in Anti-Virus Software**  
+		- If the software is able to find a vulnerability in the detection software that allows it to replace or update the saved hash associated with the software the virus is imitating it could then "pass" the hash check and be considered safe. A way to do that could be 2 viruses, one for a more obscure piece of software that has lower permissions that finds the exploit and a second virus that replaces more powerful "trusted" software.  
+- Given Figure 7.5 from the book, explain how inline hooking works.  
+	- ![Pasted image 20240227110821.png](./assets/Pasted%20image%2020240227110821.png)  
+	1. **Identifying Target Functions**: The first step in inline hooking is to identify the functions or system calls within the target application that you want to intercept. These could be functions related to file operations, network communication, user input processing, or any other functionality that you wish to monitor or modify.  
+    2. **Injecting Hook Code**: Once the target functions are identified, hook code is injected into the address space of the target application. This hook code typically consists of instructions that redirect the flow of execution to alternative code, which may perform additional operations before or after calling the original function.  
+    3. **Redirecting Execution**: The hook code modifies the target function's code in memory to redirect the flow of execution to the alternative code, often referred to as the hook handler or hook procedure. This redirection can be achieved using various techniques such as modifying function pointers, overwriting function prologues, or using jump instructions (e.g., JMP or CALL instructions) to redirect execution flow.  
+    4. **Executing Alternative Code**: When the target function is called by the application, the execution flow is redirected to the hook handler instead of the original function. The hook handler then executes its code, which may include logging information, modifying function parameters, or even replacing the original function call with a different implementation. Afterward, the hook handler may optionally call the original function to ensure that the application's intended functionality is preserved.  
+- What is a botnet? Give an example of how an attacker can hide its command and control infrastructure from legal authorities.  
+	- Attackers often communicate with and control large numbers of compromised devices, this is called a botnet.  
+	- More advanced botnets use peer-to-peer communications, coordinating over any suitable network protocol (including HTTPS); or use a multi-tiered communication hierarchy in which the bot herder at the top is insulated from the zombies at the bottom by layers of intermediate or proxy communication nodes.  
+	- Botnets can use peer-to-peer communications to coordinate over any network protocol. This is harder to track since the traffic is a chain and does not all directly come from the same source. This way you can insulate the bot herder machine from the rest of the network
