@@ -24,7 +24,21 @@ We used monads several times in class particularly when we went through the lego
   
 Another application is "future" or "promise" that allows for us to do web programming.  
   
-![Monad usage and control flow](./Monad%20usage%20and%20control%20flow.md)  
+# Monad usage and control flow  
+Begin with unwrapped thing  
+  
+call the wrapper function  
+  
+then run  
+then unwrap  
+  
+The monad does all of this in one step but knowing how the steps work can be powerful.  
+  
+A call to a monad can look like  
+  
+~~~c++  
+wrapperfunction(thingYouWrap, runFunction)  
+~~~  
 ![Lists as Monads](Lists%20as%20Monads.md)  
 [State Monad](./State%20Monad.md)  
   
