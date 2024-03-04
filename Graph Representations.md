@@ -23,7 +23,7 @@ Adj. Matrix has fast lookups
 Adj. List takes up less space (in sparse matrixes)  
   
   
-![Incidence Matrix](./Incidence%20Matrix.md)  
+-> [Incidence Matrix](./Incidence%20Matrix.md)  
   
 #### Bipartite Graph version  
 ![Pasted image 20240111142416.png](./assets/Pasted%20image%2020240111142416.png)  
@@ -31,8 +31,8 @@ Adj. List takes up less space (in sparse matrixes)
 1. Break into 2 parts  
 2. Show part 1 as columns, part 2 as rows  
 3. This is Powerful but struggles with directed edges  
-![Graph Laplacian Matrix](./Graph%20Laplacian%20Matrix.md)  
-![Oriented Incidence Matrix](./Oriented%20Incidence%20Matrix.md)  
+-> [Graph Laplacian Matrix](./Graph%20Laplacian%20Matrix.md)  
+-> [Oriented Incidence Matrix](./Oriented%20Incidence%20Matrix.md)  
   
   
 | Term | Meaning |  
