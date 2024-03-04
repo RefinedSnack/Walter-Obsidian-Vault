@@ -8,7 +8,7 @@ share: "true"
 - Have to make comparisons.   
   
   
-![Analogy](./Analogy.md)  
+-> [Analogy](./Analogy.md)  
   
   
 Study of a living group of people. Anthropology
