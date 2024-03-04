@@ -3,7 +3,7 @@ share: "true"
 ---  
 # Ethical Egoism  
   
-![Psychological Egoism](./Psychological%20Egoism.md)  
+-> [Psychological Egoism](./Psychological%20Egoism.md)  
   
 This theory expands on [Psychological Egoism](./Psychological%20Egoism.md) by adding a moral requirement to act in one's own self interest  
   
