@@ -18,8 +18,8 @@ share: "true"
 - The First Critique  
 - Argues for Moral Law  
 - Based on practical Reason  
-- ![Formula of Universal Law](./Formula%20of%20Universal%20Law.md)  
-- ![Formula for Humanity as an End](./Formula%20for%20Humanity%20as%20an%20End.md)  
+- -> [Formula of Universal Law](./Formula%20of%20Universal%20Law.md)  
+- -> [Formula for Humanity as an End](./Formula%20for%20Humanity%20as%20an%20End.md)  
 	- This comes from *rational agency*. Your rational agency gives you an intrinsic dignity  
   
 - Contradiction-in-Conception  
